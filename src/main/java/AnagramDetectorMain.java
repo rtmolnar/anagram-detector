@@ -16,6 +16,7 @@ public class AnagramDetectorMain {
     System.out.println("Please select one of the following options");
     System.out.println("1 - Comparison by String input in the console");
     System.out.println("2 - Comparison by text files present in the resources of the project");
+    System.out.println("3 - Comparison by text files from user machine");
 
     int option = scanner.nextInt();
 
@@ -27,10 +28,25 @@ public class AnagramDetectorMain {
       case 2:
         comparisonByResourceTextFiles(scanner);
         break;
+      case 3:
+        comparisonByProvidedTextFiles(scanner);
+        break;
       default:
         System.out.println("Option not recognized, try again please");
         executeCli();
     }
+  }
+
+  private static void comparisonByProvidedTextFiles(Scanner scanner) {
+
+    System.out.println("####################################################################################");
+    System.out.println("Please input path to file 1");
+    String filePath1 = scanner.next();
+    System.out.println("Please input path to file 2");
+    String filePath2 = scanner.next();
+
+    AnagramDetector anagramDetector = new AnagramDetector();
+    printResult(anagramDetector.isAnagramByTextFiles(filePath1, filePath2, false));
   }
 
   private static void comparisonByResourceTextFiles(Scanner scanner) {
@@ -39,7 +55,7 @@ public class AnagramDetectorMain {
     System.out.println("The texts present in the resource folder of the project will be analysed");
 
     AnagramDetector anagramDetector = new AnagramDetector();
-    printResult(anagramDetector.isAnagramByTextFiles("text1.txt", "text2.txt"));
+    printResult(anagramDetector.isAnagramByTextFiles("text1.txt", "text2.txt", true));
   }
 
   private static void comparisonByInputStrings(Scanner scanner){

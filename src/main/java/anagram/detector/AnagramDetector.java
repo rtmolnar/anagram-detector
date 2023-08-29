@@ -1,19 +1,18 @@
 package anagram.detector;
 
 import anagram.detector.algorithms.AnagramDetectorAlgorithmSort;
-import anagram.detector.fileReader.FileReader;
+import anagram.detector.fileReader.AnagramFileReader;
 import org.apache.commons.lang3.time.StopWatch;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 
 public class AnagramDetector {
 
   private static final Logger log = LogManager.getLogger(AnagramDetector.class);
-  private static FileReader fileReader;
+  private static AnagramFileReader anagramFileReader;
   AnagramDetectorAlgorithmSort anagramDetectorAlgorithm = new AnagramDetectorAlgorithmSort();
 
   /**
@@ -24,7 +23,7 @@ public class AnagramDetector {
    * @param text2 second string for comparison
    * @return boolean value representing if text1 and text2 are anagrams
    */
-  public boolean isAnagramByStrings(String text1, String text2){
+  public boolean isAnagramByStrings(String text1, String text2) {
 
     log.trace("Starting anagram algorithm by two strings");
 
@@ -50,19 +49,20 @@ public class AnagramDetector {
    * @param path2 path for the second text file
    * @return boolean value representing if the text on the files are anagrams or not
    */
-  public boolean isAnagramByTextFiles(String path1, String path2){
+  public boolean isAnagramByTextFiles(String path1, String path2, boolean isResourceFile) {
 
     log.trace("Starting anagram algorithm by two strings");
     StopWatch watch = new StopWatch();
     watch.start();
 
-    if(fileReader == null){
-      fileReader = new FileReader();
+    if (anagramFileReader == null) {
+      anagramFileReader = new AnagramFileReader();
     }
 
     try {
-      String text1 = fileReader.readFile(path1);
-      String text2 = fileReader.readFile(path2);
+
+      String text1 = isResourceFile ? anagramFileReader.readFileFromClassLoader(path1) : anagramFileReader.readFileFromPath(path1);
+      String text2 = isResourceFile ? anagramFileReader.readFileFromClassLoader(path2) : anagramFileReader.readFileFromPath(path2);
 
       boolean isAnagram = anagramDetectorAlgorithm.isAnagram(text1, text2);
 

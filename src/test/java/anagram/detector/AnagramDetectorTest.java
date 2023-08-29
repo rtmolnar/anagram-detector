@@ -22,7 +22,7 @@ public class AnagramDetectorTest {
 		String path1 = "testFileAnagram1.txt";
 		String path2 = "testFileAnagram2.txt";
 
-		assertTrue(a.isAnagramByTextFiles(path1, path2));
+		assertTrue(a.isAnagramByTextFiles(path1, path2, true));
 	}
 
 	@Test
@@ -31,7 +31,7 @@ public class AnagramDetectorTest {
 		String path1 = "testFileNotAnagram1.txt";
 		String path2 = "testFileNotAnagram2.txt";
 
-		assertFalse(a.isAnagramByTextFiles(path1, path2));
+		assertFalse(a.isAnagramByTextFiles(path1, path2, true));
 	}
 
 	@Test
@@ -40,6 +40,6 @@ public class AnagramDetectorTest {
 		String path1 = "notFound1.txt";
 		String path2 = "testFileNotAnagram2.txt";
 
-		assertFalse(a.isAnagramByTextFiles(path1, path2));
+		assertFalse(a.isAnagramByTextFiles(path1, path2, true));
 	}
 }

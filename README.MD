@@ -15,6 +15,7 @@ The user input determine how the text1 and text2 will be feed to the logic.
 
 There are several ways to use this app, they are explained in the next sub sessions of this document.
 
+In the case below the user chose option one so the next messages asked for the Strings to compare.
 The messages the user will se the terminal are the following ones:
 ```
 Welcome to he anagram detector
@@ -32,8 +33,6 @@ Lives
 2023-08-28 17:53:58 INFO ###### IS ANAGRAM ######
 ```
 
-In the case above the user chose option one so the next messages asked for the Strings to compare.
-
 In case the user choose the option 2 then the code will try to read both of the text files present in the resources folder:
 ```
 Welcome to he anagram detector
@@ -47,18 +46,41 @@ The texts present in the resource folder of the project will be analysed
 2023-08-28 18:00:41 INFO Time in milliseconds to finish the process: 81
 2023-08-28 18:00:41 INFO ###### IS ANAGRAM ######
 ```
-Another path is possible when the user selects an option that is not available which will restart the interaction:
+
+In case the user choose the option 3 the following dialog will present and the user will have to put a path to a file that actually exists on it's machine.
+
 ```
 Welcome to he anagram detector
 Please select one of the following options
 1 - Comparison by String input in the console
 2 - Comparison by text files present in the resources of the project
+3 - Comparison by text files from user machine
 3
+####################################################################################
+Please input path to file 1
+/temp/test1.txt
+Please input path to file 2
+/temp/test2.txt
+2023-08-29 13:19:10 INFO The process was done using: AnagramDetectorAlgorithmSort
+2023-08-29 13:19:10 INFO Time in milliseconds to finish the process: 6
+###### IS ANAGRAM ######
+```
+
+Another path is possible when the user selects an option that is not available which will restart the interaction:
+
+```
+Welcome to he anagram detector
+Please select one of the following options
+1 - Comparison by String input in the console
+2 - Comparison by text files present in the resources of the project
+4
 Option not recognized, try again please
 Please select one of the following options
 1 - Comparison by String input in the console
 2 - Comparison by text files present in the resources of the project
 ```
+
+## How to run the application
 
 #### Execute the main class from an IDE
 Once the user run the main class it will start printing the messages on the terminal and user can follow the instructions as commented in the first part of section of this document.
