@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Anagram Detector</title>
+  <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+  <link th:href="@{/styles/style.css}" rel="stylesheet"/>
+  <link href='https://fonts.googleapis.com/css?family=Ubuntu:300,400' rel='stylesheet' type='text/css'>
+
+</head>
+</head>
+<body>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Anagram Detector</h1>
+    </div>
+  </div>
+</div>
+
+<form action="#" th:action="@{/anagram-detector}" method="post">
+  <div class="container">
+    <div class="row">
+      <button class="col btn btn-primary" type="submit" id="btn">Check</button>
+    </div>
+    <div th:if="${isAnagram != null}"  class="result">
+      <div th:if="${isAnagram}" class="row">
+        <div class="col-3">
+          <h4>Is Anagram</h4>
+        </div>
+        <div class="col-9">
+          <img th:src="@{images/positive.png}" width="40" height="30">
+        </div>
+      </div>
+      <div th:if="${!isAnagram}" class="row">
+        <div class="col-3">
+          <h4>Is NOT Anagram</h4>
+        </div>
+        <div class="col-9">
+          <img th:src="@{images/negative.png}" width="30" height="30">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <textarea th:text="${text1}" name="text1" placeholder="Please, type here the first text" class="col text1"></textarea>
+      <textarea th:text="${text2}" name="text2" placeholder="Please, type here the second text" class="col text2"></textarea>
+    </div>
+  </div>
+</form>
+</body>
+</html>
